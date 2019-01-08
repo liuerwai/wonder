@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .wrapper{
+            left:0;
+            right:0;
+            top:0;
+            bottom:0;
+            z-index: 300;
+        }
+        .wrapper video{
+            width:100%;
+            height:100%;
+        }
+        .content{
+            z-index: 100;
+            width:100%;
+            height:100%;
+        }
+        .center{
+            align-content: center;
+        }
+    </style>
+    <!-- Google fonts -->
+    <link href='/assets/googleapis.css' rel='stylesheet' type='text/css'>
+    <link href="/assets/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="assets/animate/animate.css"/>
+    <link rel="stylesheet" href="assets/animate/set.css"/>
+    <link rel="stylesheet" href="assets/gallery/blueimp-gallery.min.css">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="root">
+
+            <div style="position: absolute; left: 45%; top: 4%">
+                <a href="#home.html">
+                    <img src="images/logo.png"></a>
+            </div>
+
+
+    <div class="wrapper">
+        <video ishivideo="true" muted="muted" autoplay="true" isrotate="false" autohide="true" loop="loop" src="./images/test.mp4">
+            <source src="./images/test.mp4" type="video/mp4">
+            <span data-i18n-text="video_bzc">当前浏览器不支持video播放</span>
+        </video>
+    </div>
+</div>
+</body>
+</html>
