@@ -3,10 +3,7 @@ package com.liuxg.wonder.util;
 
 import com.liuxg.wonder.po.Model;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,11 +14,10 @@ public class SerializerUtills {
     public static void main(String[] args) {
 
         try {
-            Map<String, Model> map = new HashMap<>();
+            Map<String, Model> map = getModel();
             Model model = new Model();
-            model.setId("1");
+            model.setId("51");
             map.put(model.getId(), model);
-            map.clear();
             saveModel(map);
             map = getModel();
             System.out.println(map);
@@ -40,6 +36,7 @@ public class SerializerUtills {
     public static synchronized int save(Object object, String path) {
 
         try {
+            FileUtils.createFileIfNotExits(path);
             FileOutputStream fileOut =
                     new FileOutputStream(path);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
