@@ -1,8 +1,12 @@
 package com.liuxg.wonder.po;
 
-import java.io.Serializable;
+import com.liuxg.wonder.util.FileUtils;
 
-public class Model implements Serializable{
+import java.io.File;
+import java.io.Serializable;
+import java.util.List;
+
+public class Model implements Serializable {
 
     //编号
     private String id;
@@ -28,6 +32,19 @@ public class Model implements Serializable{
     private String hairColor;
     //肤色
     private String skinColor;
+    // 作品图片封面地址
+    private String opusTitle;
+    // 作品图片地址
+    private List<String> opus;
+    // 素颜图片封面地址
+    private String makeupTitle;
+    // 素颜图片地址
+    private List<String> makeup;
+    // 视频图片封面地址
+    private String videioTite;
+    // 视频图片封面
+    private List<String> video;
+
 
     public String getSex() {
         return sex;
@@ -123,5 +140,85 @@ public class Model implements Serializable{
 
     public void setBirthday(String birthday) {
         this.birthday = birthday;
+    }
+
+    public String getOpusTitle() {
+        return opusTitle;
+    }
+
+    public void setOpusTitle(String opusTitle) {
+        this.opusTitle = opusTitle;
+    }
+
+    public List<String> getOpus() {
+        return opus;
+    }
+
+    public void setOpus(List<String> opus) {
+        this.opus = opus;
+    }
+
+    public String getMakeupTitle() {
+        return makeupTitle;
+    }
+
+    public void setMakeupTitle(String makeupTitle) {
+        this.makeupTitle = makeupTitle;
+    }
+
+    public List<String> getMakeup() {
+        return makeup;
+    }
+
+    public void setMakeup(List<String> makeup) {
+        this.makeup = makeup;
+    }
+
+    public String getVideioTite() {
+        return videioTite;
+    }
+
+    public void setVideioTite(String videioTite) {
+        this.videioTite = videioTite;
+    }
+
+    public List<String> getVideo() {
+        return video;
+    }
+
+    public void setVideo(List<String> video) {
+        this.video = video;
+    }
+
+    public String getImageFileBathPath() {
+        return FileUtils.getClassPath() + "static" + File.separator + "images" + File.separator + "model" + File.separator + getName() + File.separator;
+    }
+
+    public String getImageWebBathPath() {
+        return "images/model/" + getName() + "/";
+    }
+
+    public String getOpusFileBathPath() {
+        return getImageFileBathPath() + "opus" + File.separator;
+    }
+
+    public String getOpusWebBathPath() {
+        return getImageWebBathPath() + "opus" + "/";
+    }
+
+    public String getMarkupFileBathPath() {
+        return getImageFileBathPath() + "markup" + File.separator;
+    }
+
+    public String getMarkupWebBathPath() {
+        return getImageWebBathPath() + "markup" + "/";
+    }
+
+    public String getVideoFileBathPath() {
+        return getImageFileBathPath() + "video" + File.separator;
+    }
+
+    public String getVideoWebBathPath() {
+        return getImageWebBathPath() + "video" + "/";
     }
 }
