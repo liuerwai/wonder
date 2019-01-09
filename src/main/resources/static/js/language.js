@@ -76,6 +76,7 @@ $(document).ready(function () {
         "    </div>";
 
     changeLaunage();
+    queryMotels();
 
     // 切换至英语
     function toEnglish() {
@@ -122,8 +123,8 @@ $(document).ready(function () {
         if (url.indexOf("?") != -1) {
             var str = url.substr(1);
             strs = str.split("&");
-            for(var i = 0; i < strs.length; i ++) {
-                theRequest[strs[i].split("=")[0]]=(strs[i].split("=")[1]);
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = (strs[i].split("=")[1]);
             }
         }
         return theRequest;
@@ -133,9 +134,15 @@ $(document).ready(function () {
     function changeLaunage() {
         toEnglish();
         var theRequest = GetRequest();
-        if(theRequest.l=='cn'){
+        if (theRequest.l == 'cn') {
             toChinese();
         }
+    }
+
+    //查询模特
+    function queryMotels() {
+        var modelsHtml = $.ajax({url: "http://localhost:8080/queryModels", async: false});
+        $("#model").html(modelsHtml.responseText);
     }
 
 });

@@ -4,7 +4,8 @@ import com.liuxg.wonder.util.FileUtils;
 
 import java.io.File;
 import java.io.Serializable;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Model implements Serializable {
 
@@ -35,15 +36,15 @@ public class Model implements Serializable {
     // 作品图片封面地址
     private String opusTitle;
     // 作品图片地址
-    private List<String> opus;
+    private Map<String, String> opus;
     // 素颜图片封面地址
     private String makeupTitle;
     // 素颜图片地址
-    private List<String> makeup;
+    private Map<String, String> makeup;
     // 视频图片封面地址
     private String videioTite;
     // 视频图片封面
-    private List<String> video;
+    private Map<String, String> video;
 
 
     public String getSex() {
@@ -150,11 +151,11 @@ public class Model implements Serializable {
         this.opusTitle = opusTitle;
     }
 
-    public List<String> getOpus() {
+    public Map<String, String> getOpus() {
         return opus;
     }
 
-    public void setOpus(List<String> opus) {
+    public void setOpus(Map<String, String> opus) {
         this.opus = opus;
     }
 
@@ -166,11 +167,11 @@ public class Model implements Serializable {
         this.makeupTitle = makeupTitle;
     }
 
-    public List<String> getMakeup() {
+    public Map<String, String> getMakeup() {
         return makeup;
     }
 
-    public void setMakeup(List<String> makeup) {
+    public void setMakeup(Map<String, String> makeup) {
         this.makeup = makeup;
     }
 
@@ -182,12 +183,33 @@ public class Model implements Serializable {
         this.videioTite = videioTite;
     }
 
-    public List<String> getVideo() {
+    public Map<String, String> getVideo() {
         return video;
     }
 
-    public void setVideo(List<String> video) {
+    public void setVideo(Map<String, String> video) {
         this.video = video;
+    }
+
+    public void addOps(String name, String webPath) {
+        if (getOpus() == null) {
+            opus = new HashMap<>();
+        }
+        opus.put(name, webPath);
+    }
+
+    public void addMakeup(String name, String webPath) {
+        if (getMakeup() == null) {
+            makeup = new HashMap<>();
+        }
+        makeup.put(name, webPath);
+    }
+
+    public void addVideo(String name, String webPath) {
+        if (getVideo() == null) {
+            video = new HashMap<>();
+        }
+        video.put(name, webPath);
     }
 
     public String getImageFileBathPath() {
