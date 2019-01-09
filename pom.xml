@@ -34,12 +34,6 @@
 
     <build>
         <finalName>wonder</finalName>
-        <!--<resources>-->
-            <!--<resource>-->
-                <!--<directory>${basedir}/src/main/webapp</directory>-->
-                <!--<targetPath>BOOT-INF/</targetPath>-->
-            <!--</resource>-->
-        <!--</resources>-->
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
