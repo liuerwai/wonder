@@ -27,7 +27,7 @@ public class HomePage {
             "                    胸围/$chest<br/>\n" +
             "                    腰围/$waist<br/>\n" +
             "                    臀围/$hips<br/>\n" +
-            "                    <a href=\"detail.html?userId=$id&l=$l\" name=\"imgView\">View more</a>\n" +
+            "                    <a href=\"detail.html?userId=$id&l=$l\" name=\"imgView\">详细信息</a>\n" +
             "                </p>\n" +
             "            </figcaption>\n" +
             "    </figure>\n";

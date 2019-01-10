@@ -6,6 +6,7 @@ import com.liuxg.wonder.po.DetailPagePo;
 import com.liuxg.wonder.po.Model;
 import com.liuxg.wonder.service.IModelService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -32,7 +33,7 @@ public class Controller {
             html = html.replace("$waist", model.getWaist());
             html = html.replace("$hips", model.getHips());
             html = html.replace("$id", model.getId());
-            html = html.replace("$l", l == null ? "en" : l);
+            html = html.replace("$l", "cn".equals(l) ? "cn" : "en");
             stringBuffer.append(html);
         }
         return stringBuffer.toString();
@@ -44,8 +45,8 @@ public class Controller {
 
         Model model = modelService.queryOne(userId);
         DetailPagePo detailPagePo = new DetailPagePo();
-        detailPagePo.setPeopleInfo(DetailPage.getPeopleInfoHtml(model));
-        detailPagePo.setTabTitle(DetailPage.getTabTitleHtml(model));
+        detailPagePo.setPeopleInfo(DetailPage.getPeopleInfoHtml(model, l));
+        detailPagePo.setTabTitle(DetailPage.getTabTitleHtml(model, l));
         detailPagePo.setOpus(DetailPage.getOpusImagehtml(model));
         detailPagePo.setMakeup(DetailPage.getMakeUpImageHtml(model));
         detailPagePo.setVideo(DetailPage.getVideoHtml(model));

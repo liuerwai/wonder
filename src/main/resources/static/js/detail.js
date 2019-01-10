@@ -36,8 +36,9 @@ $(document).ready(function () {
     function queryDetail() {
         var theRequest = GetRequest();
         var userId = theRequest.userId;
-        var modelsHtml = $.ajax({
-            url: "http://localhost:8080/queryDetail?userId=" + userId,
+        var l = theRequest.l == 'cn' ? 'cn' : 'en';
+        $.ajax({
+            url: "http://localhost:8080/queryDetail?userId=" + userId + "&l=" + l,
             async: false,
             success: function (data) {
                 $("#peopleInfo").html(data.peopleInfo);

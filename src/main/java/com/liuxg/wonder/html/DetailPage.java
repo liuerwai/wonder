@@ -7,7 +7,7 @@ public class DetailPage {
 
     public static final String no_album = "images/no_album.jpg";
 
-    public static final String peopleInfo = "" +
+    public static final String peopleInfoCn = "" +
             "        <div id=\"name\">\n" +
             "            <h2>$name</h2>\n" +
             "        </div>\n" +
@@ -17,7 +17,7 @@ public class DetailPage {
             "        <div id=\"data\" style=\"margin: 15px;\">\n" +
             "            <div style=\"background-color: #dddddd;width: 350px; height: 350px;\">\n" +
             "                <li><span>生日</span>$birth</li>\n" +
-            "                <li><span>SEX</span>$sex</li>\n" +
+            "                <li><span>性别</span>$sex</li>\n" +
             "                <li><span>身高</span>$height cm</li>\n" +
             "                <li><span>胸围</span>$chest cm</li>\n" +
             "                <li><span>腰围</span>$waist cm</li>\n" +
@@ -29,12 +29,35 @@ public class DetailPage {
             "            </div>\n" +
             "        </div>";
 
-    public static String getPeopleInfoHtml(Model model) {
 
-        return peopleInfo.replace("$name", model.getName())
+    public static final String peopleInfoEn = "" +
+            "        <div id=\"name\">\n" +
+            "            <h2>$name</h2>\n" +
+            "        </div>\n" +
+            "        <div id=\"image\">\n" +
+            "            <img style=\"width: 350px; height: 350px;\" src=\"$peoImg\">\n" +
+            "        </div>\n" +
+            "        <div id=\"data\" style=\"margin: 15px;\">\n" +
+            "            <div style=\"background-color: #dddddd;width: 350px; height: 350px;\">\n" +
+            "                <li><span>BIRTHDAY</span>$birth</li>\n" +
+            "                <li><span>SEX</span>$sex</li>\n" +
+            "                <li><span>HEIHT</span>$height cm</li>\n" +
+            "                <li><span>CHEST</span>$chest cm</li>\n" +
+            "                <li><span>WAIST</span>$waist cm</li>\n" +
+            "                <li><span>HIPS</span>$hips cm</li>\n" +
+            "                <li><span>SHOSESIZE</span>$shoesSize</li>\n" +
+            "                <li><span>EYECOLOR</span>$eyeColor</li>\n" +
+            "                <li><span>HAIRCOLOR</span>$hairColor</li>\n" +
+            "                <li><span>SKINCOLOR</span>$skinColor</li>\n" +
+            "            </div>\n" +
+            "        </div>";
+
+    public static String getPeopleInfoHtml(Model model, String l) {
+        String html = "cn".equals(l) ? peopleInfoCn : peopleInfoEn;
+        return html.replace("$name", model.getName())
                 .replace("$peoImg", model.getOpusTitle())
                 .replace("$birth", model.getBirthday())
-                .replace("$sex", model.getSex())
+                .replace("$sex", getSex(l, model))
                 .replace("$height", model.getHeight())
                 .replace("$chest", model.getChest())
                 .replace("$waist", model.getWaist())
@@ -45,7 +68,7 @@ public class DetailPage {
                 .replace("$skinColor", model.getSkinColor());
     }
 
-    public static final String tabTitle = "" +
+    public static final String tabTitleCn = "" +
             "           <div class=\"tab-title-item\">\n" +
             "                <a href=\"#opus\" aria-controls=\"home\" role=\"tab\" data-toggle=\"tab\">\n" +
             "                    <img src=\"$opusImg\"> <br/>\n" +
@@ -65,9 +88,31 @@ public class DetailPage {
             "                </a>\n" +
             "            </div>";
 
-    public static String getTabTitleHtml(Model model) {
 
-        return tabTitle.replace("$opusImg", StringUtils.isEmpty(model.getOpusTitle()) ? no_album : model.getOpusTitle())
+    public static final String tabTitleEn = "" +
+            "           <div class=\"tab-title-item\">\n" +
+            "                <a href=\"#opus\" aria-controls=\"home\" role=\"tab\" data-toggle=\"tab\">\n" +
+            "                    <img src=\"$opusImg\"> <br/>\n" +
+            "                    <span>WORKS</span>\n" +
+            "                </a>\n" +
+            "            </div>\n" +
+            "            <div class=\"tab-title-item\">\n" +
+            "                <a href=\"#makeup\" aria-controls=\"profile\" role=\"tab\" data-toggle=\"tab\">\n" +
+            "                    <img src=\"$makeupImg\"> <br/>\n" +
+            "                    <span>NATURAL</span>\n" +
+            "                </a>\n" +
+            "            </div>\n" +
+            "            <div class=\"tab-title-item\">\n" +
+            "                <a href=\"#video\" aria-controls=\"settings\" role=\"tab\" data-toggle=\"tab\">\n" +
+            "                    <img src=\"$videoImg\"> <br/>\n" +
+            "                    <span>VIDEO</span>\n" +
+            "                </a>\n" +
+            "            </div>";
+
+    public static String getTabTitleHtml(Model model, String l) {
+
+        String html = "cn".equals(l) ? tabTitleCn : tabTitleEn;
+        return html.replace("$opusImg", StringUtils.isEmpty(model.getOpusTitle()) ? no_album : model.getOpusTitle())
                 .replace("$makeupImg", StringUtils.isEmpty(model.getMakeupTitle()) ? no_album : model.getMakeupTitle())
                 .replace("$videoImg", StringUtils.isEmpty(model.getVideioTite()) ? no_album : model.getVideioTite());
     }
@@ -119,5 +164,12 @@ public class DetailPage {
         return stringBuffer.toString();
     }
 
+    public static String getSex(String l, Model model) {
+
+        if ("女".equals(model.getSex())) {
+            return "cn".equals(l) ? "女" : "WOMEN";
+        }
+        return "cn".equals(l) ? "男" : "MEN";
+    }
 
 }

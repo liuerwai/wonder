@@ -141,7 +141,9 @@ $(document).ready(function () {
 
     //查询模特
     function queryMotels() {
-        var modelsHtml = $.ajax({url: "http://localhost:8080/queryModels", async: false});
+        var theRequest = GetRequest();
+        var l = theRequest.l == 'cn' ? 'cn' : 'en';
+        var modelsHtml = $.ajax({url: "http://localhost:8080/queryModels?l=" + l, async: false});
         $("#model").html(modelsHtml.responseText);
     }
 
