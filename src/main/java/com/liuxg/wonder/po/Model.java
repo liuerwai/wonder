@@ -228,12 +228,12 @@ public class Model implements Serializable {
         return getImageWebBathPath() + "opus" + "/";
     }
 
-    public String getMarkupFileBathPath() {
-        return getImageFileBathPath() + "markup" + File.separator;
+    public String getMakeupFileBathPath() {
+        return getImageFileBathPath() + "makeup" + File.separator;
     }
 
-    public String getMarkupWebBathPath() {
-        return getImageWebBathPath() + "markup" + "/";
+    public String getMakeupWebBathPath() {
+        return getImageWebBathPath() + "makeup" + "/";
     }
 
     public String getVideoFileBathPath() {

@@ -36,12 +36,18 @@ $(document).ready(function () {
     function queryDetail() {
         var theRequest = GetRequest();
         var userId = theRequest.userId;
-        var modelsHtml = $.ajax({url: "http://localhost:8080/queryDetail?userId=" + userId, async: false});
-        $("#peopleInfo").html(modelsHtml.responseJson.peopleInfo);
-        $("#tab-title").html(modelsHtml.responseJson.tabTitle);
-        $("#opus-content").html(modelsHtml.responseJson.opus);
-        $("#makeup").html(modelsHtml.responseJson.makeup);
-        $("#video-content").html(modelsHtml.responseJson.video);
+        var modelsHtml = $.ajax({
+            url: "http://localhost:8080/queryDetail?userId=" + userId,
+            async: false,
+            success: function (data) {
+                $("#peopleInfo").html(data.peopleInfo);
+                $("#tab-title").html(data.tabTitle);
+                $("#opus-content").html(data.opus);
+                $("#makeup").html(data.makeup);
+                $("#video-content").html(data.video);
+            },
+        });
+
     }
 
 });

@@ -12,7 +12,7 @@ public class DetailPage {
             "            <h2>$name</h2>\n" +
             "        </div>\n" +
             "        <div id=\"image\">\n" +
-            "            <img style=\"width: 350px; height: 350px;\" src=\"#peoImg\">\n" +
+            "            <img style=\"width: 350px; height: 350px;\" src=\"$peoImg\">\n" +
             "        </div>\n" +
             "        <div id=\"data\" style=\"margin: 15px;\">\n" +
             "            <div style=\"background-color: #dddddd;width: 350px; height: 350px;\">\n" +
@@ -32,6 +32,7 @@ public class DetailPage {
     public static String getPeopleInfoHtml(Model model) {
 
         return peopleInfo.replace("$name", model.getName())
+                .replace("$peoImg", model.getOpusTitle())
                 .replace("$birth", model.getBirthday())
                 .replace("$sex", model.getSex())
                 .replace("$height", model.getHeight())
@@ -72,7 +73,7 @@ public class DetailPage {
     }
 
 
-    public static final String image = "" +
+    public static final String imageHtml = "" +
             "                    <a href=\"$image\" name=\"imgView\" class=\"tab-content-a\">\n" +
             "                        <img src=\"$image\" class=\"tab-content-img\">\n" +
             "                    </a>\n";
@@ -82,7 +83,7 @@ public class DetailPage {
         StringBuffer stringBuffer = new StringBuffer("");
         if (model.getOpus() != null) {
             for (String image : model.getOpus().values()) {
-                stringBuffer.append(image.replaceAll("\\$image", image));
+                stringBuffer.append(imageHtml.replaceAll("\\$image", image));
             }
         }
         return stringBuffer.toString();
@@ -93,13 +94,13 @@ public class DetailPage {
         StringBuffer stringBuffer = new StringBuffer("");
         if (model.getMakeup() != null) {
             for (String image : model.getMakeup().values()) {
-                stringBuffer.append(image.replaceAll("\\$image", image));
+                stringBuffer.append(imageHtml.replaceAll("\\$image", image));
             }
         }
         return stringBuffer.toString();
     }
 
-    public static final String video = "" +
+    public static final String videoHtml = "" +
             "                    <video ishivideo=\"true\" muted=\"muted\" autoplay=\"true\" isrotate=\"false\" autohide=\"true\" loop=\"loop\"\n" +
             "                           src=\"$video\">\n" +
             "                        <source src=\"$video\" type=\"video/mp4\">\n" +
@@ -112,7 +113,7 @@ public class DetailPage {
         StringBuffer stringBuffer = new StringBuffer("");
         if (model.getVideo() != null) {
             for (String video : model.getVideo().values()) {
-                stringBuffer.append(video.replaceAll("\\$video", video));
+                stringBuffer.append(videoHtml.replaceAll("\\$video", video));
             }
         }
         return stringBuffer.toString();

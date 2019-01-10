@@ -243,22 +243,6 @@
             $(this).attr("data-gallery", "");
             $(this).siblings("a").attr("data-gallery", "");
         });
-
-        // 获取当前用户信息
-        $.ajax({
-            type: "GET",
-            url: "/getUser",
-            data: {userId: GetQueryString('userId')},
-            dataType: "json",
-            success: function (data) {
-                var html = '';
-                $.each(data, function (commentIndex, comment) {
-                    html += '<div class="comment"><h6>' + comment['username']
-                        + ':</h6><p class="para"' + comment['content']
-                        + '</p></div>';
-                });
-            }
-        })
     });
 
     // 获取url参数用户Id

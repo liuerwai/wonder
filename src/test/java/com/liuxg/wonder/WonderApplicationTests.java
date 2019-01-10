@@ -23,7 +23,7 @@ public class WonderApplicationTests {
 //       addLucy();
 //       addYeva();
        List list = modelService.query();
-       System.out.println(list.size());
+       System.out.println(list);
     }
 
     public void addLucy() throws Exception {
@@ -46,7 +46,7 @@ public class WonderApplicationTests {
             model.addOps(i + ".jpg", model.getOpusWebBathPath() + i + ".jpg");
         }
         for (int i = 1; i <= 1; i++) {
-            model.addMakeup(i + ".jpg", model.getMarkupWebBathPath() + i + ".jpg");
+            model.addMakeup(i + ".jpg", model.getMakeupWebBathPath() + i + ".jpg");
         }
         modelService.add(model);
     }
@@ -67,12 +67,12 @@ public class WonderApplicationTests {
         model.setSkinColor("White");
         model.setOpusTitle(model.getImageWebBathPath() + "opus.jpg");
         model.setMakeupTitle(model.getImageWebBathPath() + "makeup.jpg");
-        model.setMakeupTitle(model.getImageWebBathPath() + "video.jpg");
+        model.setVideioTite(model.getImageWebBathPath() + "video.jpg");
         for (int i = 1; i <= 13; i++) {
             model.addOps(i + ".jpg", model.getOpusWebBathPath() + i + ".jpg");
         }
         for (int i = 1; i <= 1; i++) {
-            model.addMakeup(i + ".jpg", model.getMarkupWebBathPath() + i + ".jpg");
+            model.addMakeup(i + ".jpg", model.getMakeupWebBathPath() + i + ".jpg");
         }
         model.addVideo("video.mp4", model.getVideoWebBathPath() + "video.mp4");
         modelService.add(model);
