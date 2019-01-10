@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
     changeLaunage();
+    queryDetail();
 
     // 切换至汉语
     function toChinese() {
@@ -29,6 +30,18 @@ $(document).ready(function () {
         if (theRequest.l == 'cn') {
             toChinese();
         }
+    }
+
+    //查询模特
+    function queryDetail() {
+        var theRequest = GetRequest();
+        var userId = theRequest.userId;
+        var modelsHtml = $.ajax({url: "http://localhost:8080/queryDetail?userId=" + userId, async: false});
+        $("#peopleInfo").html(modelsHtml.responseJson.peopleInfo);
+        $("#tab-title").html(modelsHtml.responseJson.tabTitle);
+        $("#opus-content").html(modelsHtml.responseJson.opus);
+        $("#makeup").html(modelsHtml.responseJson.makeup);
+        $("#video-content").html(modelsHtml.responseJson.video);
     }
 
 });
