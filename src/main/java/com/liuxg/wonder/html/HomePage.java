@@ -1,6 +1,6 @@
 package com.liuxg.wonder.html;
 
-public class Home {
+public class HomePage {
 
     public static final String h2Html = "<h2 id=\"hModel\" class=\"text-center  wowload fadeInUp\" style=\"margin-left: 5%;\">WONDER MODELS</h2>";
 
