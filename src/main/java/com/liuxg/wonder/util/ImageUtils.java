@@ -97,10 +97,9 @@ public class ImageUtils {
      */
     public static void reduceImg(String file) throws Exception {
 
-        // 压缩
+        // 等宽 等高 压缩
         File srcFile = new File(file);
         File distfile = new File(file.split("\\.")[0] + "redusTo" + file.split("\\.")[1]);
-        // 等宽 等高 压缩
         reduceImg(srcFile.getPath(), distfile.getPath(),
                 getImgWidthHeight(srcFile)[0], getImgWidthHeight(srcFile)[1], null);
         // 删除原图片
@@ -111,13 +110,6 @@ public class ImageUtils {
     }
 
     public static void main(String[] args) throws Exception {
-
-//        File srcfile = new File("C:\\Users\\liuxu\\Desktop\\home2.jpg");
-//        File distfile = new File("C:\\Users\\liuxu\\Desktop\\home3.jpg");
-//
-//        System.out.println("压缩前图片大小：" + srcfile.length());
-//        reduceImg(srcfile.getPath(), distfile.getPath(), getImgWidthHeight(srcfile)[0], getImgWidthHeight(srcfile)[1], null);
-//        System.out.println("压缩后图片大小：" + distfile.length());
 
         reduceImg("C:\\Users\\liuxu\\Desktop\\home.jpg");
 
