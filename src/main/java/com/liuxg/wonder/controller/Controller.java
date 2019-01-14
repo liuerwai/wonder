@@ -59,7 +59,7 @@ public class Controller {
     @ResponseBody
     public String queryManagerModels() {
 
-        StringBuffer stringBuffer = new StringBuffer();
+        StringBuffer stringBuffer = new StringBuffer(ManagerPage.titleHtml);
         List<Model> list = modelService.query();
         for (Model model : list) {
             String trHtml = ManagerPage.trHtml;

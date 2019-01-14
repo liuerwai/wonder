@@ -4,6 +4,19 @@ import java.util.Collection;
 
 public class ManagerPage {
 
+    public static final String titleHtml = "<tr>\n" +
+            "        <th>姓名</th>\n" +
+            "        <th>作品封面</th>\n" +
+            "        <th>作品</th>\n" +
+            "        <th>生活照封面图片</th>\n" +
+            "        <th>生活照</th>\n" +
+            "        <th>视频封面图片</th>\n" +
+            "        <th>视频</th>\n" +
+            "        <th>上传</th>\n" +
+            "        <th>预览</th>\n" +
+            "    </tr>";
+
+
     public static final String trHtml = "<tr>\n" +
             "            <td>$name</td>\n" +
             "            <td>$opusTitle</td>\n" +

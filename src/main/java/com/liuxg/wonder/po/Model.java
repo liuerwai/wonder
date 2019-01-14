@@ -9,6 +9,8 @@ import java.util.Map;
 
 public class Model implements Serializable {
 
+    public static final String uploadImage = "images/no_album.jpg";
+
     //编号
     private String id;
     //姓名
@@ -144,7 +146,7 @@ public class Model implements Serializable {
     }
 
     public String getOpusTitle() {
-        return opusTitle;
+        return opusTitle == null ? uploadImage : opusTitle;
     }
 
     public void setOpusTitle(String opusTitle) {
@@ -152,7 +154,7 @@ public class Model implements Serializable {
     }
 
     public Map<String, String> getOpus() {
-        return opus;
+        return opus == null ? opus = new HashMap<>() : opus;
     }
 
     public void setOpus(Map<String, String> opus) {
@@ -160,7 +162,7 @@ public class Model implements Serializable {
     }
 
     public String getMakeupTitle() {
-        return makeupTitle == null ? "" : makeupTitle;
+        return makeupTitle == null ? uploadImage : makeupTitle;
     }
 
     public void setMakeupTitle(String makeupTitle) {
@@ -168,7 +170,7 @@ public class Model implements Serializable {
     }
 
     public Map<String, String> getMakeup() {
-        return makeup == null ? new HashMap<>() : makeup;
+        return makeup == null ? makeup = new HashMap<>() : makeup;
     }
 
     public void setMakeup(Map<String, String> makeup) {
@@ -176,7 +178,7 @@ public class Model implements Serializable {
     }
 
     public String getVideioTite() {
-        return videioTite == null ? "" : videioTite;
+        return videioTite == null ? uploadImage : videioTite;
     }
 
     public void setVideioTite(String videioTite) {
@@ -184,7 +186,7 @@ public class Model implements Serializable {
     }
 
     public Map<String, String> getVideo() {
-        return video == null ? new HashMap<>() : video;
+        return video == null ? video = new HashMap<>() : video;
     }
 
     public void setVideo(Map<String, String> video) {

@@ -21,28 +21,32 @@
             text-align: center;
         }
 
-        #table tr {
-        }
-
-        #table th {
-            border: 1px dotted darkmagenta;
+        table tr {
+            border: 1px dotted red;
             padding: 20px;
         }
-        #models th{
-            border: 1px dotted darkmagenta;
+
+        table th {
+            border: 1px dotted red;
+            padding: 20px;
+        }
+
+        table td {
+            border: 1px dotted red;
             padding: 20px;
         }
 
         .contarner{
             display: -webkit-flex;
             display: flex;
-            width: 600px;
+            width: 410px;
             flex-wrap:wrap;
         }
 
         .img-container {
             width: 100px;
             height: 100px;
+            margin: 1px;
         }
 
         .img {
@@ -53,11 +57,12 @@
         .video-container {
             width: 100px;
             height: 100px;
+            margin: 1px;
         }
 
         .video {
-            width: 100px;
-            height: 100px;
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
@@ -75,7 +80,6 @@
         <th>上传</th>
         <th>预览</th>
     </tr>
-    <div id="models">
         <tr>
             <td>$name</td>
             <td>$opusTitle</td>
@@ -95,7 +99,6 @@
             </td>
             <td><a href="detail.html?userId=$userId">预览</a></td>
         </tr>
-    </div>
 </table>
 
 
