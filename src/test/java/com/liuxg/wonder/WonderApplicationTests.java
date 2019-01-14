@@ -20,15 +20,15 @@ public class WonderApplicationTests {
 
     @Test
     public void contextLoads() throws Exception {
-//       addLucy();
-//       addYeva();
+       addLucy();
+       addYeva();
        List list = modelService.query();
        System.out.println(list);
     }
 
     public void addLucy() throws Exception {
         Model model = new Model();
-        model.setId(TimestampUtils.getId());
+        model.setId("1");
         model.setName("Lucy");
         model.setBirthday("08-19");
         model.setSex("女");
@@ -53,7 +53,7 @@ public class WonderApplicationTests {
 
     public void addYeva() throws Exception {
         Model model = new Model();
-        model.setId(TimestampUtils.getId());
+        model.setId("2");
         model.setName("Yeva");
         model.setBirthday("08-19");
         model.setSex("女");

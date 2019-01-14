@@ -160,7 +160,7 @@ public class Model implements Serializable {
     }
 
     public String getMakeupTitle() {
-        return makeupTitle;
+        return makeupTitle == null ? "" : makeupTitle;
     }
 
     public void setMakeupTitle(String makeupTitle) {
@@ -168,7 +168,7 @@ public class Model implements Serializable {
     }
 
     public Map<String, String> getMakeup() {
-        return makeup;
+        return makeup == null ? new HashMap<>() : makeup;
     }
 
     public void setMakeup(Map<String, String> makeup) {
@@ -176,7 +176,7 @@ public class Model implements Serializable {
     }
 
     public String getVideioTite() {
-        return videioTite;
+        return videioTite == null ? "" : videioTite;
     }
 
     public void setVideioTite(String videioTite) {
@@ -184,7 +184,7 @@ public class Model implements Serializable {
     }
 
     public Map<String, String> getVideo() {
-        return video;
+        return video == null ? new HashMap<>() : video;
     }
 
     public void setVideo(Map<String, String> video) {
