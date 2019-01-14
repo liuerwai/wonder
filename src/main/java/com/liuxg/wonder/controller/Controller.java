@@ -6,7 +6,9 @@ import com.liuxg.wonder.html.ManagerPage;
 import com.liuxg.wonder.po.DetailPagePo;
 import com.liuxg.wonder.po.Model;
 import com.liuxg.wonder.service.IModelService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -75,6 +77,21 @@ public class Controller {
         }
         return stringBuffer.toString();
     }
+
+
+    @RequestMapping("editInfo")
+    public  String editInfo(Model model) {
+
+        Model newModel = new Model();
+        if(StringUtils.isEmpty(model.getId())){
+
+        } else {
+
+        }
+        return "manager.html";
+    }
+
+
 
 
 }
