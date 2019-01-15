@@ -1,5 +1,6 @@
 package com.liuxg.wonder.util;
 
+import com.liuxg.wonder.constant.UploadType;
 import com.liuxg.wonder.po.Model;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -50,25 +51,20 @@ public class FileUtils {
      * @param request
      * @return
      */
-    public static void saveUploadFile(HttpServletRequest request, Model model) {
+    public static void saveUploadFile(HttpServletRequest request, String path) throws Exception {
 
         MultipartHttpServletRequest multipartHttpservletRequest = (MultipartHttpServletRequest) request;
-        MultipartFile file = multipartHttpservletRequest.getFileMap().values().iterator().next();
-        String origName = file.getOriginalFilename();
-        String path = model.getOpusFileBathPath();
-        //导入文件目录
-        File dir = new File(path);
-        if (!dir.exists()) {
-            dir.mkdirs();
-        }
-        String fileName = path + "xxx.jpg";
-        File destFile = new File(fileName);
-        try {
+        for (MultipartFile file : multipartHttpservletRequest.getFileMap().values()) {
+            String origName = file.getOriginalFilename();
+            String fileName = path + origName;
+            //导入文件目录
+            File dir = new File(path);
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+            File destFile = new File(fileName);
             file.transferTo(destFile);
-        } catch (Exception e) {
-           e.printStackTrace();
         }
-
     }
 
     public static void main(String[] args) throws Exception {

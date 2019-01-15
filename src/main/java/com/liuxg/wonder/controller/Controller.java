@@ -1,5 +1,6 @@
 package com.liuxg.wonder.controller;
 
+import com.liuxg.wonder.constant.UploadType;
 import com.liuxg.wonder.html.DetailPage;
 import com.liuxg.wonder.html.HomePage;
 import com.liuxg.wonder.html.ManagerPage;
@@ -7,7 +8,9 @@ import com.liuxg.wonder.po.DetailPagePo;
 import com.liuxg.wonder.po.Model;
 import com.liuxg.wonder.service.IModelService;
 import com.liuxg.wonder.util.FileUtils;
+import com.liuxg.wonder.util.TimestampUtils;
 import com.sun.org.apache.xpath.internal.operations.Mod;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -81,25 +84,57 @@ public class Controller {
     }
 
 
-    @RequestMapping("editInfo")
-    public String editInfo(Model model) {
+    @RequestMapping("updateInfo")
+    public String updateInfo(Model model) {
 
-        Model newModel = new Model();
-        if (StringUtils.isEmpty(model.getId())) {
-
-        } else {
-
+        try {
+            if (StringUtils.isEmpty(model.getId())) {
+                model.setId(TimestampUtils.getId());
+                modelService.add(model);
+            } else {
+                Model oldModel = modelService.queryOne(model.getId());
+                oldModel.setName(model.getName());
+                oldModel.setBirthday(model.getBirthday());
+                oldModel.setSex(model.getSex());
+                oldModel.setHeight(model.getHeight());
+                oldModel.setChest(model.getChest());
+                oldModel.setWaist(model.getWaist());
+                oldModel.setHips(model.getHips());
+                oldModel.setEyeColor(model.getEyeColor());
+                oldModel.setHairColor(model.getHairColor());
+                oldModel.setSkinColor(model.getSkinColor());
+                oldModel.setShoeSize(model.getShoeSize());
+                modelService.add(oldModel);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error.html";
         }
         return "manager.html";
     }
 
-    @RequestMapping("upload")
+    @RequestMapping("queryInfo")
     @ResponseBody
-    public String upload(HttpServletRequest request) {
+    public Model queryInfo(String userId) {
 
-        FileUtils.saveUploadFile(request, modelService.query().get(0));
-        return  "";
+        if (StringUtils.isEmpty(userId)) {
+            return null;
+        }
+        Model model = modelService.queryOne(userId);
+        return model;
     }
 
+    @RequestMapping("upload")
+    public String upload(HttpServletRequest request, String userId, String type) {
+
+        try {
+            Model model = modelService.queryOne(userId);
+            String basePath = UploadType.getBathPath(type, model);
+            FileUtils.saveUploadFile(request, basePath);
+        } catch (Exception e) {
+            return "error.html";
+        }
+        return "manager.html";
+    }
 
 }
