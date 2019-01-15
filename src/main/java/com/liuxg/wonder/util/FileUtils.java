@@ -1,7 +1,14 @@
 package com.liuxg.wonder.util;
 
+import com.liuxg.wonder.po.Model;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
+import java.util.Random;
 
 public class FileUtils {
 
@@ -35,6 +42,33 @@ public class FileUtils {
             }
 
         }
+    }
+
+    /**
+     * 保存上传的文件
+     *
+     * @param request
+     * @return
+     */
+    public static void saveUploadFile(HttpServletRequest request, Model model) {
+
+        MultipartHttpServletRequest multipartHttpservletRequest = (MultipartHttpServletRequest) request;
+        MultipartFile file = multipartHttpservletRequest.getFileMap().values().iterator().next();
+        String origName = file.getOriginalFilename();
+        String path = model.getOpusFileBathPath();
+        //导入文件目录
+        File dir = new File(path);
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+        String fileName = path + "xxx.jpg";
+        File destFile = new File(fileName);
+        try {
+            file.transferTo(destFile);
+        } catch (Exception e) {
+           e.printStackTrace();
+        }
+
     }
 
     public static void main(String[] args) throws Exception {
