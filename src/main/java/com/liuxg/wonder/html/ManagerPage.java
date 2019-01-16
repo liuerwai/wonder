@@ -18,7 +18,7 @@ public class ManagerPage {
 
 
     public static final String trHtml = "<tr>\n" +
-            "            <td><a href=\"info.html?userId=$userId\">$name</a></td>" +
+            "            <td><a href=\"info.html?userId=$userId\">$name</a></td>\n" +
             "            <td>$opusTitle</td>\n" +
             "            <td>\n" +
             "                <div class=\"contarner\">$opus</div>\n" +
@@ -32,7 +32,7 @@ public class ManagerPage {
             "                <div class=\"contarner\">$video</div>\n" +
             "            </td>\n" +
             "            <td>\n" +
-            "                <button>上传</button>\n" +
+            "                <a href=\"upload.html?userId=$userId\">上传</a>\n" +
             "            </td>\n" +
             "            <td><a href=\"detail.html?userId=$userId\">预览</a></td>\n" +
             "        </tr>";

@@ -6,7 +6,7 @@ public enum UploadType {
 
     OPUS("opus"),
     OPUS_Title("opusTitle"),
-    MAKEUP("make"),
+    MAKEUP("makeup"),
     MAKEUP_TITLE("makeupTitle"),
     VIDEO("video"),
     VIDEO_TITLE("videoTitle");

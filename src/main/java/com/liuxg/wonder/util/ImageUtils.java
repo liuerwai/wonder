@@ -76,7 +76,7 @@ public class ImageUtils {
      * @param height  目标高度像素
      * @param width   目标宽度像素
      */
-    public final static void scale(String srcPath, String result, int width, int height) {
+    private final static void scale(String srcPath, String result, int width, int height) {
 
         try {
             BufferedImage bufferedImage = ImageIO.read(new File(srcPath));

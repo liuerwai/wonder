@@ -1,5 +1,6 @@
 package com.liuxg.wonder.po;
 
+import com.liuxg.wonder.constant.UploadType;
 import com.liuxg.wonder.util.FileUtils;
 
 import java.io.File;
@@ -244,5 +245,37 @@ public class Model implements Serializable {
 
     public String getVideoWebBathPath() {
         return getImageWebBathPath() + "video" + "/";
+    }
+
+
+    public void saveWebPath(String type, String file) {
+        String name = getFileName(file);
+        for (UploadType item : UploadType.values()) {
+            if (item.type.equals(type)) {
+                if (item == UploadType.OPUS) {
+                    addOps(name, getOpusWebBathPath() + name);
+                }
+                if (item == UploadType.OPUS_Title) {
+                    setOpusTitle(getImageWebBathPath() + name);
+                }
+                if (item == UploadType.MAKEUP) {
+                    addMakeup(name, getMakeupWebBathPath() + name);
+                }
+                if (item == UploadType.MAKEUP_TITLE) {
+                    setMakeupTitle(getImageWebBathPath() + name);
+                }
+                if (item == UploadType.VIDEO) {
+                    addVideo(name, getVideoWebBathPath() + name);
+                }
+                if (item == UploadType.VIDEO_TITLE) {
+                    setVideioTite(getImageWebBathPath() + name);
+                }
+            }
+        }
+    }
+
+    public String getFileName(String path) {
+        int index = path.lastIndexOf(File.separator);
+        return path.substring(index + 1, path.length());
     }
 }

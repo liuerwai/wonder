@@ -8,7 +8,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 public class FileUtils {
@@ -49,10 +51,13 @@ public class FileUtils {
      * 保存上传的文件
      *
      * @param request
+     * @param path
      * @return
+     * @throws Exception
      */
-    public static void saveUploadFile(HttpServletRequest request, String path) throws Exception {
+    public static List<String> saveUploadFile(HttpServletRequest request, String path) throws Exception {
 
+        List<String> files = new ArrayList<>();
         MultipartHttpServletRequest multipartHttpservletRequest = (MultipartHttpServletRequest) request;
         for (MultipartFile file : multipartHttpservletRequest.getFileMap().values()) {
             String origName = file.getOriginalFilename();
@@ -64,7 +69,9 @@ public class FileUtils {
             }
             File destFile = new File(fileName);
             file.transferTo(destFile);
+            files.add(fileName);
         }
+        return files;
     }
 
     public static void main(String[] args) throws Exception {

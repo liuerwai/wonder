@@ -8,9 +8,8 @@ import com.liuxg.wonder.po.DetailPagePo;
 import com.liuxg.wonder.po.Model;
 import com.liuxg.wonder.service.IModelService;
 import com.liuxg.wonder.util.FileUtils;
+import com.liuxg.wonder.util.ImageUtils;
 import com.liuxg.wonder.util.TimestampUtils;
-import com.sun.org.apache.xpath.internal.operations.Mod;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -125,12 +124,25 @@ public class Controller {
     }
 
     @RequestMapping("upload")
+    @ResponseBody
     public String upload(HttpServletRequest request, String userId, String type) {
 
         try {
             Model model = modelService.queryOne(userId);
             String basePath = UploadType.getBathPath(type, model);
-            FileUtils.saveUploadFile(request, basePath);
+            List<String> files = FileUtils.saveUploadFile(request, basePath);
+            // 压缩
+            for (String file : files) {
+                if (UploadType.MAKEUP_TITLE.type.equals(type) ||
+                        UploadType.OPUS_Title.type.equals(type) ||
+                        UploadType.VIDEO_TITLE.type.equals(type)) {
+                    ImageUtils.reduceImg(file, 1000, 800);
+                } else {
+                    ImageUtils.reduceImg(file);
+                }
+                model.saveWebPath(type, file);
+            }
+            modelService.add(model);
         } catch (Exception e) {
             return "error.html";
         }

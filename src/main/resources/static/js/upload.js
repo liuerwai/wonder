@@ -1,6 +1,24 @@
 $(document).ready(function () {
 
-    queryDetail();
+    var request = GetRequest();
+    $("#opus").click(function (event) {
+        uploadFile(request.userId, 'opus');
+    });
+    $("#opusTitle").click(function (event) {
+        uploadFile(request.userId, 'opusTitle');
+    });
+    $("#makeup").click(function (event) {
+        uploadFile(request.userId, 'makeup');
+    });
+    $("#makeupTitle").click(function (event) {
+        uploadFile(request.userId, 'makeupTitle');
+    });
+    $("#video").click(function (event) {
+        uploadFile(request.userId, 'video');
+    });
+    $("#videoTitle").click(function (event) {
+        uploadFile(request.userId, 'videoTitle');
+    });
 
     //获取参数
     function GetRequest() {
@@ -24,7 +42,7 @@ $(document).ready(function () {
             url: "queryInfo?userId=" + userId,
             async: false,
             success: function (data) {
-                if(data != null){
+                if (data != null) {
                     $("#id").val(data.id);
                     $("#name").val(data.name);
                     $("#birthday").val(data.birthday);
@@ -44,6 +62,7 @@ $(document).ready(function () {
     }
 
     function uploadFile(userId, type) {
+
         var pic = $("#pic").get(0).files[0];
         var formData = new FormData();
         formData.append("file", pic);
@@ -63,10 +82,10 @@ $(document).ready(function () {
             },
             success: function (res) {
                 console.log(res);
-                $("#versionsize").val(res.filesize);
-                $("#versionurl").val(res.url);
             }
         });
+        window.location.href="manager.html";
+
     }
 
     function onprogress(evt) {
