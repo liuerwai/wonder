@@ -143,7 +143,7 @@ $(document).ready(function () {
     function queryMotels() {
         var theRequest = GetRequest();
         var l = theRequest.l == 'cn' ? 'cn' : 'en';
-        var modelsHtml = $.ajax({url: "http://localhost:8080/queryModels?l=" + l, async: false});
+        var modelsHtml = $.ajax({url: "queryModels?l=" + l, async: false});
         $("#model").html(modelsHtml.responseText);
     }
 

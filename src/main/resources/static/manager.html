@@ -36,11 +36,11 @@
             padding: 20px;
         }
 
-        .contarner{
+        .contarner {
             display: -webkit-flex;
             display: flex;
             width: 410px;
-            flex-wrap:wrap;
+            flex-wrap: wrap;
         }
 
         .img-container {
@@ -80,26 +80,28 @@
         <th>上传</th>
         <th>预览</th>
     </tr>
-        <tr>
-            <td>$name</td>
-            <td>$opusTitle</td>
-            <td>
-                <div class="contarner">$opus</div>
-            </td>
-            <td>$makeupTitle</td>
-            <td>
-                <div class="contarner">$makeup</div>
-            </td>
-            <td>$videoTitle</td>
-            <td>
-                <div class="contarner">$video</div>
-            </td>
-            <td>
-                <button>上传</button>
-            </td>
-            <td><a href="detail.html?userId=$userId">预览</a></td>
-        </tr>
+    <tr>
+        <td><a href="info.html?userId=$id">$name</a></td>
+        <td>$opusTitle</td>
+        <td>
+            <div class="contarner">$opus</div>
+        </td>
+        <td>$makeupTitle</td>
+        <td>
+            <div class="contarner">$makeup</div>
+        </td>
+        <td>$videoTitle</td>
+        <td>
+            <div class="contarner">$video</div>
+        </td>
+        <td>
+            <button>上传</button>
+        </td>
+        <td><a href="detail.html?userId=$userId">预览</a></td>
+    </tr>
 </table>
+
+<a href="info.html">添加</a>
 
 
 <script src="assets/jquery.js"></script>

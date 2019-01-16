@@ -18,7 +18,7 @@ public class ManagerPage {
 
 
     public static final String trHtml = "<tr>\n" +
-            "            <td>$name</td>\n" +
+            "            <td><a href=\"info.html?userId=$userId\">$name</a></td>" +
             "            <td>$opusTitle</td>\n" +
             "            <td>\n" +
             "                <div class=\"contarner\">$opus</div>\n" +

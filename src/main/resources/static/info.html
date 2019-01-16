@@ -14,23 +14,57 @@
     <script src="assets/video.min.js"></script>
     <script src="assets/html5media.min.js"></script>
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-    <!--<script src="js/manager.js"></script>-->
+    <script src="js/info.js"></script>
     <style>
+        .center {
+            position: fixed;
+            text-align: center;
+            top: 10%;
+            left: 10%;
+        }
+
+        form {
+
+        }
+
+        input {
+            margin: 5px;
+        }
 
     </style>
 </head>
 
 <body>
 
-<form action="/editInfo">
-    First name:<br>
-    <input type="text" name="firstname" value="Mickey">
-    <br>
-    Last name:<br>
-    <input type="text" name="lastname" value="Mouse">
-    <br><br>
-    <input type="submit" value="Submit">
-</form>
+<div class="center">
+    <form action="/updateInfo">
+        姓名:
+        <input type="text" id="name" name="name" value="Mickey"><br>
+        生日:
+        <input type="text" id="birthday" name="birthday" value="Mickey"><br>
+        性别
+        <input type="text" id="sex" name="sex" value="Mickey"><br>
+        身高
+        <input type="text" id="height" name="height" value="Mickey"><br>
+        胸围
+        <input type="text" id="chest" name="chest" value="Mickey"><br>
+        腰围
+        <input type="text" id="waist" name="waist" value="Mickey"><br>
+        臀围
+        <input type="text" id="hips" name="hips" value="Mickey"><br>
+        鞋码
+        <input type="text" id="shoeSize" name="shoeSize" value="Mickey"><br>
+        眼睛颜色
+        <input type="text" id="eyeColor" name="eyeColor" value="Mickey"><br>
+        发色
+        <input type="text" id="hairColor" name="hairColor" value="Mickey"><br>
+        肤色
+        <input type="text" id="skinColor" name="skinColor" value="Mickey"><br>
+        <input type="hidden" id="id" name="id" value="">
+        <br><br>
+        <input type="submit" value="提交">
+    </form>
+</div>
 
 
 <script src="assets/jquery.js"></script>

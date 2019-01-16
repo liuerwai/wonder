@@ -38,7 +38,7 @@ $(document).ready(function () {
         var userId = theRequest.userId;
         var l = theRequest.l == 'cn' ? 'cn' : 'en';
         $.ajax({
-            url: "http://localhost:8080/queryDetail?userId=" + userId + "&l=" + l,
+            url: "queryDetail?userId=" + userId + "&l=" + l,
             async: false,
             success: function (data) {
                 $("#peopleInfo").html(data.peopleInfo);
