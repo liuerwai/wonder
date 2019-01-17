@@ -1,5 +1,6 @@
 package com.liuxg.wonder.controller;
 
+import com.liuxg.wonder.constant.Properties;
 import com.liuxg.wonder.constant.UploadType;
 import com.liuxg.wonder.html.DetailPage;
 import com.liuxg.wonder.html.HomePage;
@@ -136,13 +137,31 @@ public class Controller {
                         UploadType.VIDEO_TITLE.type.equals(type)) {
                     ImageUtils.reduceImg(file, 1000, 800);
                 } else if (UploadType.MAKEUP.type.equals(type) ||
-                        UploadType.OPUS.type.equals(type)) {
+                        UploadType.OPUS.type.equals(type)||
+                        UploadType.HOME_IMG.equals(type)) {
                     ImageUtils.reduceImg(file);
                 }
                 model.saveWebPath(type, file);
             }
             // 保存web路径
             modelService.add(model);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:manager.html";
+        }
+        return "redirect:manager.html";
+    }
+
+    @RequestMapping("uploadHomeFile")
+    public String uploadHomeFile(HttpServletRequest request, String type) {
+
+        try {
+            List<String> files = FileUtils.saveUploadFile(request, Properties.ImagePath);
+            for (String file : files) {
+                if (UploadType.HOME_IMG.equals(type)) {
+                    ImageUtils.reduceImg(file);
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return "redirect:manager.html";

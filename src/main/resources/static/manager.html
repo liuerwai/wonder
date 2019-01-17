@@ -66,11 +66,13 @@
             width: 100%;
             height: 100%;
         }
-        form{
+
+        form {
             position: relative;
             width: 170px;
             display: inline-block;
         }
+
         .delete {
             position: absolute;
             top: 0px;
@@ -80,10 +82,56 @@
             display: none;
         }
 
+        #head {
+            display: -webkit-flex;
+            display: flex;
+            text-align: center;
+        }
+
+        .a-container {
+           text-align: center;
+            margin: 10px;
+        }
+
+        .home-img-container {
+            width: 300px;
+            height: 200px;
+            margin: 1px;
+        }
     </style>
 </head>
 
 <body>
+
+<div id="head">
+    <div class="a-container">
+        <a href="info.html">添加模特</a><br/><br/>
+    </div>
+    <div class="a-container">
+        <div class="home-img-container">
+            <img src="images/home.jpg" class="img">
+        </div>
+        <form action="uploadHomeFile?type=homeImage" method="post" enctype="multipart/form-data">
+            <input type="file" name="pic" accept="image/*">
+            <input type="submit">
+        </form>
+    </div>
+    <div>
+        <div class="home-img-container">
+            <video class="video" ishivideo="true" muted="muted" autoplay="true" isrotate="false" autohide="true"
+                   loop="loop"
+                   src="images/test.mp4">
+                <source src="images/test.mp4" type="video/mp4">
+                <span data-i18n-text="video_bzc">当前浏览器不支持video播放</span>
+            </video>
+        </div>
+        <form action="uploadHomeFile?type=indexVideo" method="post" enctype="multipart/form-data">
+            <input type="file" name="pic" accept="video/*">
+            <input type="submit">
+        </form>
+    </div>
+</div>
+
 <table id="table">
     <tr>
         <th>姓名</th>
@@ -119,8 +167,6 @@
 <form>
 
 </form>
-
-<a href="info.html">添加模特</a>
 
 
 <script src="assets/jquery.js"></script>

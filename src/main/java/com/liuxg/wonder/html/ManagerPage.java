@@ -17,9 +17,9 @@ public class ManagerPage {
 
     public static final String trHtml = "<tr>\n" +
             "            <td>" +
-            "               <a href=\"info.html?userId=$userId\">$name&nbsp;&nbsp;</a> <br/>" +
-            "               <a href=\"deleteModel?userId=$userId\" onClick=\"return confirm('确定删除?');\">删除</a> <br/>" +
-            "               <a href=\"detail.html?userId=$userId\">预览</a> <br/>" +
+            "               <a href=\"info.html?userId=$userId\">$name&nbsp;&nbsp;</a> <br/><br/>" +
+            "               <a href=\"deleteModel?userId=$userId\" onClick=\"return confirm('确定删除?');\">删除</a> <br/><br/>" +
+            "               <a href=\"detail.html?userId=$userId\">预览</a> <br/><br/>" +
             "            </td>\n" +
             "            <td>" +
             "                $opusTitle" +

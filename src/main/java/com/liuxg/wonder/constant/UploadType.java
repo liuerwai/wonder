@@ -9,7 +9,9 @@ public enum UploadType {
     MAKEUP("makeup"),
     MAKEUP_TITLE("makeupTitle"),
     VIDEO("video"),
-    VIDEO_TITLE("videoTitle");
+    VIDEO_TITLE("videoTitle"),
+    HOME_IMG("homeImage"),
+    INDEX_VIDEO("indexVideo");
 
     public String type;
 
