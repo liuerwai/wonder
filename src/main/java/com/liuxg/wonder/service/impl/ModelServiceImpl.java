@@ -28,4 +28,9 @@ public class ModelServiceImpl implements IModelService {
     public int add(Model model) throws Exception {
         return modelDao.add(model);
     }
+
+    @Override
+    public int delete(Model model) throws Exception {
+        return modelDao.delete(model);
+    }
 }

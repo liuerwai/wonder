@@ -11,4 +11,6 @@ public interface IModelDao {
     Model queryOne(String id);
 
     int add(Model model) throws Exception;
+
+    int delete(Model model) throws Exception;
 }

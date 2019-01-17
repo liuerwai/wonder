@@ -249,7 +249,7 @@ public class Model implements Serializable {
 
 
     public void saveWebPath(String type, String file) {
-        String name = getFileName(file);
+        String name = FileUtils.getFileName(file);
         for (UploadType item : UploadType.values()) {
             if (item.type.equals(type)) {
                 if (item == UploadType.OPUS) {
@@ -272,10 +272,5 @@ public class Model implements Serializable {
                 }
             }
         }
-    }
-
-    public String getFileName(String path) {
-        int index = path.lastIndexOf(File.separator);
-        return path.substring(index + 1, path.length());
     }
 }

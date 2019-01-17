@@ -50,4 +50,23 @@ public class ModelDaoImpl implements IModelDao {
         }
         return 1;
     }
+
+    @Override
+    public int delete(Model model) throws Exception {
+
+        if (StringUtils.isEmpty(model.getId())) {
+            throw new Exception("id不能为空！");
+        }
+        WRITE_LOCK.lock();
+        try {
+            Map map = SerializerUtills.getModel();
+            map.remove(model.getId());
+            SerializerUtills.saveModel(map);
+        } catch (Exception e) {
+            return 0;
+        } finally {
+            WRITE_LOCK.unlock();
+        }
+        return 1;
+    }
 }

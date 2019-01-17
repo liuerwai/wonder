@@ -12,12 +12,16 @@ public class ManagerPage {
             "        <th>生活照</th>\n" +
             "        <th>视频封面图片</th>\n" +
             "        <th>视频</th>\n" +
-            "        <th>预览</th>\n" +
             "    </tr>";
 
 
     public static final String trHtml = "<tr>\n" +
-            "            <td><a href=\"info.html?userId=$userId\">$name</a></td>\n" +
+            "            <td>" +
+            "               <a href=\"info.html?userId=$userId\">$name</a>" +
+            "               <a href=\"info.html?userId=$userId\">编辑个人信息</a>" +
+            "               <a href=\"deleteModel?userId=$userId\" onClick=\"return confirm('确定删除?');\">删除</a>" +
+            "               <a href=\"detail.html?userId=$userId\">预览</a>" +
+            "            </td>\n" +
             "            <td>" +
             "                $opusTitle" +
             "                <form action=upload?userId=$userId&type=opusTitle method=post enctype=multipart/form-data>\n" +
@@ -60,7 +64,6 @@ public class ManagerPage {
             "                    <input type=submit>\n" +
             "                </form>" +
             "            </td>\n" +
-            "            <td><a href=\"detail.html?userId=$userId\">预览</a></td>\n" +
             "        </tr>";
 
     public static final String imageHtml =

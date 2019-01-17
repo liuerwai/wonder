@@ -149,5 +149,19 @@ public class Controller {
         return "redirect:manager.html";
     }
 
+    @RequestMapping("deleteModel")
+    public String deleteModel(HttpServletRequest request, String userId) {
+
+        try {
+            Model model = modelService.queryOne(userId);
+            modelService.delete(model);
+            FileUtils.delete(model.getImageFileBathPath());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:manager.html";
+        }
+        return "redirect:manager.html";
+    }
+
 
 }
