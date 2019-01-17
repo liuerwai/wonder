@@ -69,14 +69,16 @@ public class ManagerPage {
     public static final String imageHtml =
             "<div class=\"img-container\">\n" +
                     "    <img src=\"$src\" class=\"img\">\n" +
+                    "    <a href=\"deleteFile?src=$src\"><img src=\"images/button-cross.png\" class=\"delete\" /></a>" +
                     "</div>";
 
-    public static final String videoHtml = "<div class=\"video-container\">\n" +
+    public static final String videoHtml = "<div class=\"img-container\">\n" +
             "    <video class=\"video\" ishivideo=\"true\" muted=\"muted\" autoplay=\"true\" isrotate=\"false\" autohide=\"true\" loop=\"loop\"\n" +
             "           src=\"$src\">\n" +
             "        <source src=\"$src\" type=\"video/mp4\">\n" +
             "        <span data-i18n-text=\"video_bzc\">当前浏览器不支持video播放</span>\n" +
             "    </video>\n" +
+            "    <a href=\"deleteFile?src=$src\"><img src=\"images/button-cross.png\" class=\"delete\" /></a>" +
             "</div>";
 
     public static String getImageHtml(String src) {

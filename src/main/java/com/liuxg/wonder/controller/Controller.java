@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.util.List;
 
 @org.springframework.stereotype.Controller
@@ -156,6 +157,22 @@ public class Controller {
             Model model = modelService.queryOne(userId);
             modelService.delete(model);
             FileUtils.delete(model.getImageFileBathPath());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:manager.html";
+        }
+        return "redirect:manager.html";
+    }
+
+    @RequestMapping("deleteFile")
+    public String deleteFile(HttpServletRequest request, String src) {
+
+        try {
+            String staticPath = FileUtils.getClassPath() + "static" + File.separator;
+            String fileName = staticPath + src.replace("/", File.separator);
+            if(fileName.contains("model")){
+                FileUtils.delete(fileName);
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return "redirect:manager.html";
