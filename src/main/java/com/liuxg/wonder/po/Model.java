@@ -2,6 +2,7 @@ package com.liuxg.wonder.po;
 
 import com.liuxg.wonder.constant.UploadType;
 import com.liuxg.wonder.util.FileUtils;
+import org.springframework.util.StringUtils;
 
 import java.io.File;
 import java.io.Serializable;
@@ -147,7 +148,7 @@ public class Model implements Serializable {
     }
 
     public String getOpusTitle() {
-        return opusTitle == null ? uploadImage : opusTitle;
+        return StringUtils.isEmpty(opusTitle) ? uploadImage : opusTitle;
     }
 
     public void setOpusTitle(String opusTitle) {
@@ -163,7 +164,7 @@ public class Model implements Serializable {
     }
 
     public String getMakeupTitle() {
-        return makeupTitle == null ? uploadImage : makeupTitle;
+        return StringUtils.isEmpty(makeupTitle) ? uploadImage : makeupTitle;
     }
 
     public void setMakeupTitle(String makeupTitle) {
@@ -179,7 +180,7 @@ public class Model implements Serializable {
     }
 
     public String getVideioTite() {
-        return videioTite == null ? uploadImage : videioTite;
+        return StringUtils.isEmpty(videioTite) ? uploadImage : videioTite;
     }
 
     public void setVideioTite(String videioTite) {
@@ -201,6 +202,13 @@ public class Model implements Serializable {
         opus.put(name, webPath);
     }
 
+    public void removeOps(String name) {
+        if (getOpus() == null) {
+            opus = new HashMap<>();
+        }
+        opus.remove(name);
+    }
+
     public void addMakeup(String name, String webPath) {
         if (getMakeup() == null) {
             makeup = new HashMap<>();
@@ -208,11 +216,25 @@ public class Model implements Serializable {
         makeup.put(name, webPath);
     }
 
+    public void removeMakeup(String name) {
+        if (getMakeup() == null) {
+            makeup = new HashMap<>();
+        }
+        makeup.remove(name);
+    }
+
     public void addVideo(String name, String webPath) {
         if (getVideo() == null) {
             video = new HashMap<>();
         }
         video.put(name, webPath);
+    }
+
+    public void removeVideo(String name) {
+        if (getVideo() == null) {
+            video = new HashMap<>();
+        }
+        video.remove(name);
     }
 
     public String getImageFileBathPath() {
@@ -273,4 +295,32 @@ public class Model implements Serializable {
             }
         }
     }
+
+
+    public void removeWebPath(String type, String file) {
+        String fileName = FileUtils.getFileName(file);
+        for (UploadType item : UploadType.values()) {
+            if (item.type.equals(type)) {
+                if (item == UploadType.OPUS) {
+                    removeOps(fileName);
+                }
+                if (item == UploadType.OPUS_Title) {
+                    setOpusTitle(null);
+                }
+                if (item == UploadType.MAKEUP) {
+                    removeMakeup(fileName);
+                }
+                if (item == UploadType.MAKEUP_TITLE) {
+                    setMakeupTitle(null);
+                }
+                if (item == UploadType.VIDEO) {
+                    removeVideo(fileName);
+                }
+                if (item == UploadType.VIDEO_TITLE) {
+                    setVideioTite(null);
+                }
+            }
+        }
+    }
+
 }

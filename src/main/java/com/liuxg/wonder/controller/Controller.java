@@ -69,12 +69,12 @@ public class Controller {
         for (Model model : list) {
             String trHtml = ManagerPage.trHtml;
             trHtml = trHtml.replace("$name", model.getName());
-            trHtml = trHtml.replace("$opusTitle", ManagerPage.getImageHtml(model.getOpusTitle()));
-            trHtml = trHtml.replace("$opus", ManagerPage.getImageHtml(model.getOpus().values()));
-            trHtml = trHtml.replace("$makeupTitle", ManagerPage.getImageHtml(model.getMakeupTitle()));
-            trHtml = trHtml.replace("$makeup", ManagerPage.getImageHtml(model.getMakeup().values()));
-            trHtml = trHtml.replace("$videoTitle", ManagerPage.getImageHtml(model.getVideioTite()));
-            trHtml = trHtml.replace("$video", ManagerPage.getVideoHtml(model.getVideo().values()));
+            trHtml = trHtml.replace("$opusTitle", ManagerPage.getImageHtml(model.getOpusTitle(), "opusTitle"));
+            trHtml = trHtml.replace("$opus", ManagerPage.getImageHtml(model.getOpus().values(), "opus"));
+            trHtml = trHtml.replace("$makeupTitle", ManagerPage.getImageHtml(model.getMakeupTitle(), "makeupTitle"));
+            trHtml = trHtml.replace("$makeup", ManagerPage.getImageHtml(model.getMakeup().values(), "makeup"));
+            trHtml = trHtml.replace("$videoTitle", ManagerPage.getImageHtml(model.getVideioTite(), "videoTitle"));
+            trHtml = trHtml.replace("$video", ManagerPage.getVideoHtml(model.getVideo().values(), "video"));
             trHtml = trHtml.replace("$userId", model.getId());
             stringBuffer.append(trHtml).append("\n");
         }
@@ -165,14 +165,18 @@ public class Controller {
     }
 
     @RequestMapping("deleteFile")
-    public String deleteFile(HttpServletRequest request, String src) {
+    public String deleteFile(HttpServletRequest request, String src, String userId, String type) {
 
         try {
             String staticPath = FileUtils.getClassPath() + "static" + File.separator;
             String fileName = staticPath + src.replace("/", File.separator);
-            if(fileName.contains("model")){
+            if (fileName.contains("model")) {
                 FileUtils.delete(fileName);
+                Model model = modelService.queryOne(userId);
+                model.removeWebPath(type, fileName);
+                modelService.add(model);
             }
+
         } catch (Exception e) {
             e.printStackTrace();
             return "redirect:manager.html";

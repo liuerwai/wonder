@@ -69,7 +69,7 @@ public class ManagerPage {
     public static final String imageHtml =
             "<div class=\"img-container\">\n" +
                     "    <img src=\"$src\" class=\"img\">\n" +
-                    "    <a href=\"deleteFile?src=$src\"><img src=\"images/button-cross.png\" class=\"delete\" /></a>" +
+                    "    <a href=\"deleteFile?src=$src&userId=$userId&type=$type\"><img src=\"images/button-cross.png\" class=\"delete\" /></a>" +
                     "</div>";
 
     public static final String videoHtml = "<div class=\"img-container\">\n" +
@@ -78,29 +78,29 @@ public class ManagerPage {
             "        <source src=\"$src\" type=\"video/mp4\">\n" +
             "        <span data-i18n-text=\"video_bzc\">当前浏览器不支持video播放</span>\n" +
             "    </video>\n" +
-            "    <a href=\"deleteFile?src=$src\"><img src=\"images/button-cross.png\" class=\"delete\" /></a>" +
+            "    <a href=\"deleteFile?src=$src&userId=$userId&type=$type\"><img src=\"images/button-cross.png\" class=\"delete\" /></a>" +
             "</div>";
 
-    public static String getImageHtml(String src) {
-        return imageHtml.replace("$src", src);
+    public static String getImageHtml(String src, String type) {
+        return imageHtml.replace("$src", src).replace("$type", type);
     }
 
-    public static String getImageHtml(Collection<String> srcs) {
+    public static String getImageHtml(Collection<String> srcs, String type) {
         StringBuffer stringBuffer = new StringBuffer("");
         for (String src : srcs) {
-            stringBuffer.append(getImageHtml(src));
+            stringBuffer.append(getImageHtml(src, type));
         }
         return stringBuffer.toString();
     }
 
-    public static String getVideoHtml(String src) {
-        return videoHtml.replaceAll("\\$src", src);
+    public static String getVideoHtml(String src, String type) {
+        return videoHtml.replaceAll("\\$src", src).replace("$type", type);
     }
 
-    public static String getVideoHtml(Collection<String> srcs) {
+    public static String getVideoHtml(Collection<String> srcs, String type) {
         StringBuffer stringBuffer = new StringBuffer("");
         for (String src : srcs) {
-            stringBuffer.append(getVideoHtml(src));
+            stringBuffer.append(getVideoHtml(src, type));
         }
         return stringBuffer.toString();
     }
