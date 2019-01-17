@@ -18,8 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-import static com.liuxg.wonder.html.ManagerPage.getImageHtml;
-
 @org.springframework.stereotype.Controller
 public class Controller {
 
@@ -107,9 +105,9 @@ public class Controller {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return "error.html";
+            return "redirect:manager.html";
         }
-        return "manager.html";
+        return "redirect:manager.html";
     }
 
     @RequestMapping("queryInfo")
@@ -124,29 +122,31 @@ public class Controller {
     }
 
     @RequestMapping("upload")
-    @ResponseBody
     public String upload(HttpServletRequest request, String userId, String type) {
 
         try {
             Model model = modelService.queryOne(userId);
             String basePath = UploadType.getBathPath(type, model);
             List<String> files = FileUtils.saveUploadFile(request, basePath);
-            // 压缩
             for (String file : files) {
+                // 压缩
                 if (UploadType.MAKEUP_TITLE.type.equals(type) ||
                         UploadType.OPUS_Title.type.equals(type) ||
                         UploadType.VIDEO_TITLE.type.equals(type)) {
                     ImageUtils.reduceImg(file, 1000, 800);
-                } else {
+                } else if (UploadType.MAKEUP.type.equals(type) ||
+                        UploadType.OPUS.type.equals(type)) {
                     ImageUtils.reduceImg(file);
                 }
                 model.saveWebPath(type, file);
             }
+            // 保存web路径
             modelService.add(model);
         } catch (Exception e) {
-            return "error.html";
+            e.printStackTrace();
+            return "redirect:manager.html";
         }
-        return "manager.html";
+        return "redirect:manager.html";
     }
 
 

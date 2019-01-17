@@ -12,27 +12,53 @@ public class ManagerPage {
             "        <th>生活照</th>\n" +
             "        <th>视频封面图片</th>\n" +
             "        <th>视频</th>\n" +
-            "        <th>上传</th>\n" +
             "        <th>预览</th>\n" +
             "    </tr>";
 
 
     public static final String trHtml = "<tr>\n" +
             "            <td><a href=\"info.html?userId=$userId\">$name</a></td>\n" +
-            "            <td>$opusTitle</td>\n" +
+            "            <td>" +
+            "                $opusTitle" +
+            "                <form action=upload?userId=$userId&type=opusTitle method=post enctype=multipart/form-data>\n" +
+            "                    <input type=file name=pic accept=image/*>\n" +
+            "                    <input type=submit>\n" +
+            "                </form>" +
+            "            </td>\n" +
             "            <td>\n" +
             "                <div class=\"contarner\">$opus</div>\n" +
+            "                <form action=upload?userId=$userId&type=opus method=post enctype=multipart/form-data>\n" +
+            "                    <input type=file name=pic accept=image/*>\n" +
+            "                    <input type=submit>\n" +
+            "                </form>" +
             "            </td>\n" +
-            "            <td>$makeupTitle</td>\n" +
+            "            <td>" +
+            "                $makeupTitle" +
+            "                <form action=upload?userId=$userId&type=makeupTitle method=post enctype=multipart/form-data>\n" +
+            "                    <input type=file name=pic accept=image/*>\n" +
+            "                    <input type=submit>\n" +
+            "                </form>" +
+            "            </td>\n" +
             "            <td>\n" +
             "                <div class=\"contarner\">$makeup</div>\n" +
+            "                <form action=upload?userId=$userId&type=makeup method=post enctype=multipart/form-data>\n" +
+            "                    <input type=file name=pic accept=image/*>\n" +
+            "                    <input type=submit>\n" +
+            "                </form>" +
             "            </td>\n" +
-            "            <td>$videoTitle</td>\n" +
+            "            <td>" +
+            "                $videoTitle" +
+            "                <form action=upload?userId=$userId&type=videoTitle method=post enctype=multipart/form-data>\n" +
+            "                    <input type=file name=pic accept=image/*>\n" +
+            "                    <input type=submit>\n" +
+            "                </form>" +
+            "            </td>\n" +
             "            <td>\n" +
             "                <div class=\"contarner\">$video</div>\n" +
-            "            </td>\n" +
-            "            <td>\n" +
-            "                <a href=\"upload.html?userId=$userId\">上传</a>\n" +
+            "                <form action=upload?userId=$userId&type=video method=post enctype=multipart/form-data>\n" +
+            "                    <input type=file name=pic accept=video/*>\n" +
+            "                    <input type=submit>\n" +
+            "                </form>" +
             "            </td>\n" +
             "            <td><a href=\"detail.html?userId=$userId\">预览</a></td>\n" +
             "        </tr>";
