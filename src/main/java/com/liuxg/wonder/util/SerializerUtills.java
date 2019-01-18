@@ -1,6 +1,7 @@
 package com.liuxg.wonder.util;
 
 
+import com.liuxg.wonder.constant.Properties;
 import com.liuxg.wonder.po.Model;
 
 import java.io.*;
@@ -9,7 +10,7 @@ import java.util.Map;
 
 public class SerializerUtills {
 
-    public final static String modelPath = SerializerUtills.class.getClassLoader().getResource("").getPath() + "../../../data/modelMap.ser";
+    public final static String modelPath = Properties.PackagePath + "data/modelMap.ser";
 
     public static void main(String[] args) {
 

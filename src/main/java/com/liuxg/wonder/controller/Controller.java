@@ -194,7 +194,7 @@ public class Controller {
     public String deleteFile(HttpServletRequest request, String src, String userId, String type) {
 
         try {
-            String staticPath = FileUtils.getClassPath() + "static" + File.separator;
+            String staticPath = Properties.StaticPath;
             String fileName = staticPath + src.replace("/", File.separator);
             if (fileName.contains("model")) {
                 FileUtils.delete(fileName);

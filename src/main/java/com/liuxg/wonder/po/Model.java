@@ -1,5 +1,6 @@
 package com.liuxg.wonder.po;
 
+import com.liuxg.wonder.constant.Properties;
 import com.liuxg.wonder.constant.UploadType;
 import com.liuxg.wonder.util.FileUtils;
 import org.springframework.util.StringUtils;
@@ -238,7 +239,7 @@ public class Model implements Serializable {
     }
 
     public String getImageFileBathPath() {
-        return FileUtils.getClassPath() + "static" + File.separator + "images" + File.separator + "model" + File.separator + getName() + File.separator;
+        return Properties.ImagePath + "model" + File.separator + getName() + File.separator;
     }
 
     public String getImageWebBathPath() {
