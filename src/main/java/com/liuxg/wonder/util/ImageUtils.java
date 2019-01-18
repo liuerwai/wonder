@@ -43,10 +43,18 @@ public class ImageUtils {
      *
      * @throws Exception
      */
-    public static void reduceImg(String file) throws Exception {
+    public static void reduceImg(String file, int maxWidth) throws Exception {
 
         File srcFile = new File(file);
-        reduceImg(file, getImgWidthHeight(srcFile)[0], getImgWidthHeight(srcFile)[1]);
+        int[] widthHeight = getImgWidthHeight(srcFile);
+        int width = widthHeight[0];
+        int height = widthHeight[1];
+        if (width > maxWidth) {
+            Float rate = Float.valueOf(maxWidth) / width;
+            width = Float.valueOf(width * rate).intValue();
+            height = Float.valueOf(height * rate).intValue();
+        }
+        reduceImg(file, width, height);
     }
 
     /**
@@ -93,19 +101,18 @@ public class ImageUtils {
                         .getScaleInstance(ratio, ratio), null);//返回表示剪切变换的变换
                 itemp = op.filter(bufferedImage, null);//转换源 BufferedImage 并将结果存储在目标 BufferedImage 中。
             }
-            // 将小的源图片填充到大的纯白的目的图片中
-
-            BufferedImage image = new BufferedImage(width, height,
-                    BufferedImage.TYPE_INT_RGB);
-            Graphics2D g = image.createGraphics();
-            g.setColor(Color.white);
-            g.fillRect(0, 0, width, height);
-            // 再将源图片填充在白色图片中央
-            g.drawImage(itemp, (width - itemp.getWidth(null)) / 2, (height - itemp.getHeight(null)) / 2,
-                    itemp.getWidth(null), itemp.getHeight(null),
-                    Color.white, null);
-            g.dispose();
-            itemp = image;
+//            // 将小的源图片填充到大的纯白的目的图片中
+//            BufferedImage image = new BufferedImage(width, height,
+//                    BufferedImage.TYPE_INT_RGB);
+//            Graphics2D g = image.createGraphics();
+//            g.setColor(Color.white);
+//            g.fillRect(0, 0, width, height);
+//            // 再将源图片填充在白色图片中央
+//            g.drawImage(itemp, (width - itemp.getWidth(null)) / 2, (height - itemp.getHeight(null)) / 2,
+//                    itemp.getWidth(null), itemp.getHeight(null),
+//                    Color.white, null);
+//            g.dispose();
+//            itemp = image;
 
             ImageIO.write((BufferedImage) itemp, "JPEG", new File(result));      //输出压缩图片
         } catch (IOException e) {
@@ -115,7 +122,7 @@ public class ImageUtils {
 
     public static void main(String[] args) throws Exception {
 
-        reduceImg("C:\\Users\\liuxu\\Desktop\\4.jpg");
+        reduceImg("C:\\Users\\liuxu\\Desktop\\4.jpg", 1000);
     }
 
 

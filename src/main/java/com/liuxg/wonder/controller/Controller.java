@@ -135,11 +135,11 @@ public class Controller {
                 if (UploadType.MAKEUP_TITLE.type.equals(type) ||
                         UploadType.OPUS_Title.type.equals(type) ||
                         UploadType.VIDEO_TITLE.type.equals(type)) {
-                    ImageUtils.reduceImg(file, 1000, 800);
+                    ImageUtils.reduceImg(file, 1500);
                 } else if (UploadType.MAKEUP.type.equals(type) ||
                         UploadType.OPUS.type.equals(type) ||
                         UploadType.HOME_IMG.equals(type)) {
-                    ImageUtils.reduceImg(file);
+                    ImageUtils.reduceImg(file, 1000);
                 }
                 model.saveWebPath(type, file);
             }
@@ -166,7 +166,7 @@ public class Controller {
             List<String> files = FileUtils.saveUploadFile(request, Properties.ImagePath, name);
             for (String file : files) {
                 if (UploadType.HOME_IMG.equals(type)) {
-                    ImageUtils.reduceImg(file);
+                    ImageUtils.reduceImg(file, 1500);
                 }
             }
         } catch (Exception e) {
@@ -208,6 +208,11 @@ public class Controller {
             return "redirect:manager.html";
         }
         return "redirect:manager.html";
+    }
+
+    public static void main(String[] args) throws Exception{
+
+
     }
 
 
