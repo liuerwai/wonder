@@ -1,5 +1,6 @@
 package com.liuxg.wonder.util;
 
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -47,16 +48,32 @@ public class FileUtils {
      * 保存上传的文件
      *
      * @param request
-     * @param path
+     * @param path    保存文件路径
+     *                使用上传的文件的文件名作为文件名
      * @return
      * @throws Exception
      */
     public static List<String> saveUploadFile(HttpServletRequest request, String path) throws Exception {
+        return saveUploadFile(request, path, "");
+    }
+
+    /**
+     * @param request
+     * @param path    保存文件路径
+     * @param name    文件名
+     * @return
+     * @throws Exception
+     */
+    public static List<String> saveUploadFile(HttpServletRequest request, String path, String name) throws Exception {
 
         List<String> files = new ArrayList<>();
         MultipartHttpServletRequest multipartHttpservletRequest = (MultipartHttpServletRequest) request;
         for (MultipartFile file : multipartHttpservletRequest.getFileMap().values()) {
             String origName = file.getOriginalFilename();
+            // 替换文件名
+            if (!StringUtils.isEmpty(name)) {
+                origName = name + getFileSuffix(origName);
+            }
             String fileName = path + origName;
             //导入文件目录
             File dir = new File(path);
@@ -162,6 +179,11 @@ public class FileUtils {
     public static String getFileName(String path) {
         int index = path.lastIndexOf(File.separator);
         return path.substring(index + 1, path.length());
+    }
+
+    public static String getFileSuffix(String orginName) {
+        int index = orginName.lastIndexOf(".");
+        return orginName.substring(index, orginName.length());
     }
 
     public static void main(String[] args) throws Exception {

@@ -137,7 +137,7 @@ public class Controller {
                         UploadType.VIDEO_TITLE.type.equals(type)) {
                     ImageUtils.reduceImg(file, 1000, 800);
                 } else if (UploadType.MAKEUP.type.equals(type) ||
-                        UploadType.OPUS.type.equals(type)||
+                        UploadType.OPUS.type.equals(type) ||
                         UploadType.HOME_IMG.equals(type)) {
                     ImageUtils.reduceImg(file);
                 }
@@ -156,7 +156,14 @@ public class Controller {
     public String uploadHomeFile(HttpServletRequest request, String type) {
 
         try {
-            List<String> files = FileUtils.saveUploadFile(request, Properties.ImagePath);
+            String name = "";
+            if (UploadType.HOME_IMG.type.equals(type)) {
+                name = Properties.HomeImage;
+            }
+            if (UploadType.INDEX_VIDEO.type.equals(type)) {
+                name = Properties.IndexVideio;
+            }
+            List<String> files = FileUtils.saveUploadFile(request, Properties.ImagePath, name);
             for (String file : files) {
                 if (UploadType.HOME_IMG.equals(type)) {
                     ImageUtils.reduceImg(file);
