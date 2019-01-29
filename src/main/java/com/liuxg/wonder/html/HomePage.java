@@ -19,7 +19,7 @@ public class HomePage {
             "    </figure>\n";
 
     public static final String modelsCnHtml = "<figure class=\"effect-oscar  wowload fadeInUp\">\n" +
-            "        <img src=\"$image\"  width=\"1000\" height=\"800\"/>\n" +
+            "        <img src=\"$image\"  width=\"1000\" height=\"auto\"/>\n" +
             "            <figcaption>\n" +
             "                <h2 style=\"margin-top: 60px; font-family: SimHei;\">$name</h2>\n" +
             "                <p>\n" +

@@ -92,7 +92,7 @@ public class ImageUtils {
             int srcHeight = bufferedImage.getHeight(null);
             Image itemp = bufferedImage.getScaledInstance(srcWidth, srcHeight, bufferedImage.SCALE_SMOOTH);
             // 如果源图片大于目的图片 先将源图片缩小
-            if (srcWidth > width || srcHeight > height) {
+//            if (srcWidth > width || srcHeight > height) {
                 // 取较小的比例
                 double ratioHeight = Double.valueOf(height) / srcHeight;
                 double ratioWhidth = Double.valueOf(width) / srcWidth;
@@ -100,7 +100,7 @@ public class ImageUtils {
                 AffineTransformOp op = new AffineTransformOp(AffineTransform//仿射转换
                         .getScaleInstance(ratio, ratio), null);//返回表示剪切变换的变换
                 itemp = op.filter(bufferedImage, null);//转换源 BufferedImage 并将结果存储在目标 BufferedImage 中。
-            }
+//            }
 //            // 将小的源图片填充到大的纯白的目的图片中
 //            BufferedImage image = new BufferedImage(width, height,
 //                    BufferedImage.TYPE_INT_RGB);

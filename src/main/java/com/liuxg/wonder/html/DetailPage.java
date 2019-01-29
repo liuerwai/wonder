@@ -9,15 +9,14 @@ public class DetailPage {
 
     public static final String peopleInfoCn = "" +
             "        <div id=\"name\">\n" +
-            "            <h2>$name</h2>\n" +
+            "            <span class=\"name\">$name</span>\n" +
             "        </div>\n" +
             "        <div id=\"image\">\n" +
-            "            <img style=\"width: 350px; height: 350px;\" src=\"$peoImg\">\n" +
+            "            <img style=\"width: 350px; height: auto;\" src=\"$peoImg\">\n" +
             "        </div>\n" +
             "        <div id=\"data\" style=\"margin: 15px;\">\n" +
             "            <div style=\"background-color: #dddddd;width: 350px; height: 350px;\">\n" +
             "                <li><span>生日</span>$birth</li>\n" +
-            "                <li><span>性别</span>$sex</li>\n" +
             "                <li><span>身高</span>$height cm</li>\n" +
             "                <li><span>胸围</span>$chest cm</li>\n" +
             "                <li><span>腰围</span>$waist cm</li>\n" +
@@ -32,15 +31,14 @@ public class DetailPage {
 
     public static final String peopleInfoEn = "" +
             "        <div id=\"name\">\n" +
-            "            <h2>$name</h2>\n" +
+            "            <span class=\"name\">$name</span>\n" +
             "        </div>\n" +
             "        <div id=\"image\">\n" +
-            "            <img style=\"width: 350px; height: 350px;\" src=\"$peoImg\">\n" +
+            "            <img style=\"width: 350px; height: auto;\" src=\"$peoImg\">\n" +
             "        </div>\n" +
             "        <div id=\"data\" style=\"margin: 15px;\">\n" +
             "            <div style=\"background-color: #dddddd;width: 350px; height: 350px;\">\n" +
             "                <li><span>BIRTHDAY</span>$birth</li>\n" +
-            "                <li><span>SEX</span>$sex</li>\n" +
             "                <li><span>HEIHT</span>$height cm</li>\n" +
             "                <li><span>CHEST</span>$chest cm</li>\n" +
             "                <li><span>WAIST</span>$waist cm</li>\n" +
@@ -71,19 +69,16 @@ public class DetailPage {
     public static final String tabTitleCn = "" +
             "           <div class=\"tab-title-item\">\n" +
             "                <a href=\"#opus\" aria-controls=\"home\" role=\"tab\" data-toggle=\"tab\">\n" +
-            "                    <img src=\"$opusImg\"> <br/>\n" +
             "                    <span>作品照</span>\n" +
             "                </a>\n" +
             "            </div>\n" +
             "            <div class=\"tab-title-item\">\n" +
             "                <a href=\"#makeup\" aria-controls=\"profile\" role=\"tab\" data-toggle=\"tab\">\n" +
-            "                    <img src=\"$makeupImg\"> <br/>\n" +
             "                    <span>素颜</span>\n" +
             "                </a>\n" +
             "            </div>\n" +
             "            <div class=\"tab-title-item\">\n" +
             "                <a href=\"#video\" aria-controls=\"settings\" role=\"tab\" data-toggle=\"tab\">\n" +
-            "                    <img src=\"$videoImg\"> <br/>\n" +
             "                    <span>视频</span>\n" +
             "                </a>\n" +
             "            </div>";
@@ -92,19 +87,16 @@ public class DetailPage {
     public static final String tabTitleEn = "" +
             "           <div class=\"tab-title-item\">\n" +
             "                <a href=\"#opus\" aria-controls=\"home\" role=\"tab\" data-toggle=\"tab\">\n" +
-            "                    <img src=\"$opusImg\"> <br/>\n" +
             "                    <span>WORKS</span>\n" +
             "                </a>\n" +
             "            </div>\n" +
             "            <div class=\"tab-title-item\">\n" +
             "                <a href=\"#makeup\" aria-controls=\"profile\" role=\"tab\" data-toggle=\"tab\">\n" +
-            "                    <img src=\"$makeupImg\"> <br/>\n" +
             "                    <span>NATURAL</span>\n" +
             "                </a>\n" +
             "            </div>\n" +
             "            <div class=\"tab-title-item\">\n" +
             "                <a href=\"#video\" aria-controls=\"settings\" role=\"tab\" data-toggle=\"tab\">\n" +
-            "                    <img src=\"$videoImg\"> <br/>\n" +
             "                    <span>VIDEO</span>\n" +
             "                </a>\n" +
             "            </div>";
@@ -146,9 +138,8 @@ public class DetailPage {
     }
 
     public static final String videoHtml = "" +
-            "                    <video ishivideo=\"true\" muted=\"muted\" autoplay=\"true\" isrotate=\"false\" autohide=\"true\" loop=\"loop\"\n" +
+            "                    <video muted=\"muted\" controls=\"controls\" isrotate=\"false\" autohide=\"true\" loop=\"loop\"\n" +
             "                           src=\"$video\">\n" +
-            "                        <source src=\"$video\" type=\"video/mp4\">\n" +
             "                        <span data-i18n-text=\"video_bzc\">当前浏览器不支持video播放</span>\n" +
             "                    </video>";
 
