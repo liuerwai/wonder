@@ -5,7 +5,7 @@ public class HomePage {
     public static final String h2Html = "<h2 id=\"hModel\" class=\"text-center  wowload fadeInUp\" style=\"margin-left: 5%;\">WONDER MODELS</h2>";
 
     public static final String modelsEnHtml = "<figure class=\"effect-oscar  wowload fadeInUp\">\n" +
-            "        <img src=\"$image\"  width=\"1000\" height=\"800\"/>\n" +
+            "        <img src=\"$image\"  width=\"1000\" height=\"auto\"/>\n" +
             "            <figcaption>\n" +
             "                <h2 style=\"margin-top: 60px; font-family: SimHei;\">$name</h2>\n" +
             "                <p>\n" +
